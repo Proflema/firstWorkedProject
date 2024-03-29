@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissor</title>
+        <style>
+            body {
+                background-color: rgb(25, 25, 25);
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img >
+        <p class="title">Rock Paper Scissor</p>
+        <button class="rock" onclick="compararizon('Rock')">Rock</button>
+        <button class="paper" onclick="compararizon('Paper')">Paper</button>
+        <button class="scissors" onclick="compararizon('Scissors')">Scissors</button>
+        <p class="result"></p>
+        <button class="reset" onclick="resetScores()">Reset Scores</button>
+        <script src="random_Choice.js"></script>
+        <script>
+            const userChoices = ["Rock","Paper","Scissors"];
+
+            let scores = JSON.parse(localStorage.getItem("scores")) || {"Wins":0, "Ties": 0, "Losses":0};
+            updateScores()
+            function updateScores(){
+                document.querySelector(".result").innerText = `Wins: ${scores.Wins}, Ties: ${scores.Ties}, Losses: ${scores.Losses}`;
+            }
+            
+            function compararizon(userChoice){
+                const randomValue = randomChoice(userChoices);
+                var result = "";
+                if (userChoice === randomValue){
+                    result = "Tied"; scores.Ties += 1;
+                }else if ((userChoice === "Rock" && randomValue === "Scissors") ||
+                        (userChoice === "Paper" && randomValue === "Rock") ||
+                        (userChoice === "Scissors" && randomValue === "Paper")){
+                            result = "You won"; scores.Wins += 1;
+                        }
+                else {
+                    result = "You lose"; scores.Losses += 1;
+                }
+                
+                localStorage.setItem("scores",JSON.stringify(scores));
+                document.querySelector(".result").innerText = `${result}`;
+                document.querySelector(".result").innerText += `\n\n You ${userChoice} - ${randomValue} Computer \n\n`;
+                document.querySelector(".result").innerText += `Wins: ${scores.Wins}, Ties: ${scores.Ties}, Losses: ${scores.Losses}`;
+                
+                return result   
+            }
+
+            function resetScores(){
+                scores = {"Wins":0, "Ties": 0, "Losses":0, }
+                localStorage.setItem("scores",JSON.stringify(scores))
+                updateScores();     
+            }
+            
+            
+        </script>
+
+    </body>
+    <!--You picked ${mychoice}.Computer Pick ${random}.${comparison}-->
+</html>

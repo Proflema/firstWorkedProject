@@ -1,0 +1,52 @@
+body {
+    font-size: 25px;
+    font-family: Arial;
+}
+
+
+.subscribe-button {
+    color:white;
+    background-color: black;
+    width:130px;
+    font-size: 15px;
+    border: none;
+    border-radius:25px;
+}
+.subscribe-button:hover{
+    cursor: pointer;
+}
+.subscribe-button:active {
+    opacity: .6;
+}
+button.subscribe-button.\.is-subscribed {
+    background-color: rgb(240,240,240);
+    color: black;
+    transition: background-color .3s;
+}
+
+
+button {
+    font-weight: bold;
+    height: 50px;
+}
+
+
+.calculate-button {
+    color: white;
+    background-color: green;
+    border-radius: 8px;
+    width: 110px;
+    border: none;
+    font-size: 15px;   
+}
+
+
+.inputNumber {
+    height: 45px;
+    width: 240px;
+    border: 2px gray solid;
+    border-radius: 2px;
+}
+.inputNumber::placeholder{
+    font-size: 16px;
+}

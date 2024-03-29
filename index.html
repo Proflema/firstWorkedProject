@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM</title>
+        <meta name="author" content="Ibrahim yusuph lema">
+        <meta name="viewport" content="width = device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="domStyle.css">
+    </head>
+
+    <body>
+        <p>Youtube subscribe button</p>
+        <button class="subscribe-button" onclick="subscribe()">Subscribe</button><br><br><br>
+
+        
+        <p>Amazon shipping calculator</p>
+        <p>Order under $40 = +$10 shipping.</p>
+        <p>Order over $40 = Free shipping.</p>
+        <input class="inputNumber" type="number" placeholder="place your order" onkeydown="calculateEventElement(event)">
+        <button class="calculate-button" type="button" onclick="userInput()" onkeydown="">Calculate</button>
+        <p class="cost"></p><br><br><br>
+
+        <p>Rock Paper Scissor</p>
+        <a href="01_rock_paper_scissor.html" target="_parent"> Click here</a>
+
+        <script>
+            function subscribe(){
+                const subscribeElement = document.querySelector(".subscribe-button").innerText;
+                if (subscribeElement === "Subscribe"){
+                    document.querySelector(".subscribe-button").innerText = "Subscribed";
+                    document.querySelector(".subscribe-button").classList.add(".is-subscribed");
+                }else {
+                    document.querySelector(".subscribe-button").innerText = "Subscribe";
+                    document.querySelector(".subscribe-button").classList.remove(".is-subscribed")
+                }
+    
+}
+
+            function calculateEventElement(){
+                if (event.key === 'Enter'){
+                    userInput()
+                }
+            }
+
+            function userInput(){
+                let strUserCost = document.querySelector(".inputNumber").value;
+                let numUserCost = Number(strUserCost);
+                if (numUserCost < 40){
+                    numUserCost += 10;
+                    document.querySelector(".cost").innerText= numUserCost;
+                }else{
+                    document.querySelector(".cost").innerText = numUserCost;
+                }
+            }
+            function updateCosts(){
+                userInput()
+                document.querySelector(".cost").innerHTML = `${Number(userCost)}`
+            } 
+               
+        </script>
+    </body>
+</html>
